@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-1.7.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		$(document).ready(function() {
+
+			var socket = io.connect();
+
+			$('#buttonOk').click(function (event) {
+				socket.emit('record', {
+					menu:$('#menu').val(),
+					price:$('#price').val(),
+					members:$('#members').val()
+				});
+			})
+		});
+	</script>
+</head>
+<body>
+	
+		<table>
+			<tr>
+				<td>Menu : </td>
+				<td><input type="text" name="menu" id="menu"/></td>
+			</tr>
+			<tr>
+				<td>Price : </td>
+				<td><input type="number" name="price" id="price"/></td>
+			</tr>
+			<tr>
+				<td>members : </td>
+				<td><input type="text" name="members" id="members"/></td>
+			</tr>
+		</table>
+		<button id="buttonOk">Ok</button>
+</body>
+</html>
